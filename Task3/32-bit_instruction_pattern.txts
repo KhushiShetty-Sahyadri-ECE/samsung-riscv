@@ -1,0 +1,161 @@
+Instruction 1: addi sp,sp,-16
+Opcode: 0010011 (I-Type)
+funct3: 000 (addi operation)
+rd: sp → x2 → 00010
+rs1: sp → x2 → 00010
+Immediate: -16 → 1111111111110000
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+111111111111 00010 000 00010 0010011
+Hexadecimal: 0xff010113
+
+Instruction 2: sd ra,8(sp)
+Opcode: 0100011 (S-Type)
+funct3: 011 (for sd operation)
+rs1: sp → x2 → 00010
+rs2: ra → x1 → 00001
+Immediate: 8 → 000000000010
+Binary Representation:
+imm[11:5]   rs2   rs1   funct3   imm[4:0]   opcode
+0000000 00001 00010 011 01000 0100011
+Hexadecimal: 0x00113423
+
+Instruction 3: li a0,100
+This is equivalent to addi a0, x0, 100.
+Opcode: 0010011 (I-Type)
+funct3: 000 (addi operation)
+rd: a0 → x10 → 01010
+rs1: x0 → 00000
+Immediate: 100 → 0000001100100
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000110100 00000 000 01010 0010011
+Hexadecimal: 0x06400513
+
+Instruction 4: jal ra,10184 <sum_of_numbers>
+Opcode: 1101111 (J-Type)
+rd: ra → x1 → 00001
+Immediate: Calculated offset: 10184 - current_address = 10184 - 101b8 = -28 (offset 111111111111111111111110011100 in binary)
+Binary Representation:
+imm[20] imm[10:1] imm[11] imm[19:12] rd opcode
+1 0011100110 1 11111111 00001 1101111
+Hexadecimal: 0xfcdff0ef
+
+Instruction 5: blez a0,101e4 <main+0x38>
+Opcode: 1100011 (B-Type)
+funct3: 110 (for blez operation)
+rs1: a0 → x10 → 01010
+rs2: x0 → 00000
+Immediate: 101e4 - 101bc = 28 (offset 0000000000011100 in binary)
+Binary Representation:
+imm[12] imm[10:5] imm[4:1] imm[11] rs2 rs1 funct3 opcode
+0 000000 00011100 0 00000 01010 110 1100011
+Hexadecimal: 0x02a05463
+
+Instruction 6: mv a2,a0
+This is equivalent to addi a2, a0, 0.
+Opcode: 0010011 (I-Type)
+funct3: 000 (addi operation)
+rd: a2 → x11 → 01011
+rs1: a0 → x10 → 01010
+Immediate: 0 → 000000000000
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000000000 01010 000 01011 0010011
+Hexadecimal: 0x00050613
+
+Instruction 7: li a1,100
+This is equivalent to addi a1, x0, 100.
+Opcode: 0010011 (I-Type)
+funct3: 000 (addi operation)
+rd: a1 → x11 → 01011
+rs1: x0 → 00000
+Immediate: 100 → 0000001100100
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000110100 00000 000 01011 0010011
+Hexadecimal: 0x06400593
+
+Instruction 8: lui a0,0x21
+Opcode: 0110111 (U-Type)
+rd: a0 → x10 → 01010
+Immediate: 0x21 → 0000000000100001
+Binary Representation:
+imm[31:12] rd opcode
+0000000000100001 01010 0110111
+Hexadecimal: 0x00021537
+
+Instruction 9: addi a0,a0,672
+Opcode: 0010011 (I-Type)
+funct3: 000 (addi operation)
+rd: a0 → x10 → 01010
+rs1: a0 → x10 → 01010
+Immediate: 672 → 0000001010100
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000101100 01010 000 01010 0010011
+Hexadecimal: 0x2a050513
+
+Instruction 10: jal ra,1044c <printf>
+Opcode: 1101111 (J-Type)
+rd: ra → x1 → 00001
+Immediate: Calculated offset: 1044c - 101d0 = 60 (offset 0000000000111100 in binary)
+Binary Representation:
+imm[20] imm[10:1] imm[11] imm[19:12] rd opcode
+0 0000000111100 0 11111000 00001 1101111
+Hexadecimal: 0x27c000ef
+
+Instruction 11: li a0,0
+This is equivalent to addi a0, x0, 0.
+Opcode: 0010011 (I-Type)
+funct3: 000 (addi operation)
+rd: a0 → x10 → 01010
+rs1: x0 → 00000
+Immediate: 0 → 000000000000
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000000000 00000 000 01010 0010011
+Hexadecimal: 0x00000513
+
+Instruction 12: ld ra,8(sp)
+Opcode: 0000011 (I-Type)
+funct3: 011 (for ld operation)
+rd: ra → x1 → 00001
+rs1: sp → x2 → 00010
+Immediate: 8 → 000000000010
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000000010 00010 011 00001 0000011
+Hexadecimal: 0x00813083
+
+Instruction 13: addi sp,sp,16
+Opcode: 0010011 (I-Type)
+funct3: 000 (addi operation)
+rd: sp → x2 → 00010
+rs1: sp → x2 → 00010
+Immediate: 16 → 0000000010000
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000010000 00010 000 00010 0010011
+Hexadecimal: 0x01010113
+
+Instruction 14: ret (jalr x0, ra, 0)
+Opcode: 1100111 (I-Type)
+funct3: 000 (jalr operation)
+rd: x0 → 00000
+rs1: ra → x1 → 00001
+Immediate: 0 → 000000000000
+Binary Representation:
+imm[11:0]   rs1   funct3   rd   opcode
+000000000000 00001 000 00000 1100111
+Hexadecimal: 0x00008067
+
+Instruction 15: lui a0,0x21
+Opcode: 0110111 (U-Type)
+rd: a0 → x10 → 01010
+Immediate: 0x21 → 0000000000100001
+Binary Representation:
+imm[31:12] rd opcode
+0000000000100001 01010 0110111
+Hexadecimal: 0x00021537
+
